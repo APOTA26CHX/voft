@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leon Louis</title>
+  <link rel="icon" type="image/png" href="favicon.png?v=3" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .background {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.18) 0%,
+          rgba(0, 0, 0, 0.08) 35%,
+          rgba(0, 0, 0, 0.22) 100%
+        ),
+        url('image.jpg') no-repeat center center / cover;
+    }
+
+    .overlay {
+      position: absolute;
+      left: 50%;
+      bottom: 36px;
+      transform: translateX(-50%);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .signup-form {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .signup-form input[type="email"] {
+      width: 250px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(245, 245, 240, 0.55);
+      color: rgba(245, 245, 240, 0.9);
+      padding: 8px 0;
+      font-family: "Hoefler Text", "Baskerville", "Times New Roman", serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      outline: none;
+      box-shadow: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      text-align: left;
+    }
+
+    .signup-form input[type="email"]::placeholder {
+      color: rgba(245, 245, 240, 0.6);
+      font-style: italic;
+    }
+
+    .signup-form button {
+      margin-left: 18px;
+      background: none;
+      border: none;
+      color: rgba(245, 245, 240, 0.9);
+      font-family: "Hoefler Text", "Baskerville", "Times New Roman", serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.25s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .signup-form button:hover,
+    .contact-link:hover {
+      opacity: 0.68;
+    }
+
+    .contact-link {
+      display: inline-block;
+      color: rgba(245, 245, 240, 0.9);
+      text-decoration: none;
+      font-family: "Hoefler Text", "Baskerville", "Times New Roman", serif;
+      font-size: 11px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      transition: opacity 0.25s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .input--hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .overlay {
+        bottom: 28px;
+        gap: 18px;
+      }
+
+      .signup-form {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .signup-form input[type="email"] {
+        width: 220px;
+        text-align: center;
+      }
+
+      .signup-form button {
+        margin-left: 0;
+        font-size: 10px;
+        letter-spacing: 4px;
+      }
+
+      .contact-link {
+        font-size: 10px;
+        letter-spacing: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="overlay">
+
+      <form
+        id="sib-form"
+        class="signup-form"
+        method="POST"
+        action="https://aa3c05eb.sibforms.com/serve/MUIFAKOjbhlVY0jBP43VRJLMw6dSne-7Ijd_ghkS3B6pgP6uYxfayUpBBrDZBcvVRusaux70TS7WnBjhh3X36gy8n4zzngWDp20C-I1UNWH7WcS0VlZK2w5kENkyqGGqVwW-GgJmfRcGfPTY7R-pXdNuNQ-Pfhv-4DsL-Vm3ad_8r2IfeHstGbfTMEHziciRtMWbNSvUlBXFOwJA0g=="
+      >
+        <input
+          type="email"
+          id="EMAIL"
+          name="EMAIL"
+          autocomplete="off"
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Subscribe</button>
+
+        <input type="text" name="email_address_check" value="" class="input--hidden" />
+        <input type="hidden" name="locale" value="en" />
+        <input type="hidden" name="html_type" value="simple" />
+</form>
+
+<div id="success-message" style="display:none; color:rgba(245,245,240,0.8); font-family: 'Hoefler Text', serif; font-size:11px; letter-spacing:3px;">
+  Thank you
+</div>
+
+<a href="mailto:vo.lamuria@gmail.com" class="contact-link">Contact</a>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  const form = document.getElementById('sib-form');
+  const success = document.getElementById('success-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const emailInput = form.querySelector('input[name="EMAIL"]');
+
+    fetch("https://aa3c05eb.sibforms.com/serve/MUIFAKOjbhlVY0jBP43VRJLMw6dSne-7Ijd_ghkS3B6pgP6uYxfayUpBBrDZBcvVRusaux70TS7WnBjhh3X36gy8n4zzngWDp20C-I1UNWH7WcS0VlZK2w5kENkyqGGqVwW-GgJmfRcGfPTY7R-pXdNuNQ-Pfhv-4DsL-Vm3ad_8r2IfeHstGbfTMEHziciRtMWbNSvUlBXFOwJA0g==", {
+      method: "POST",
+      body: new URLSearchParams({
+        EMAIL: emailInput.value,
+        locale: "en",
+        html_type: "simple"
+      }),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+    .then(() => {
+      form.reset();
+      success.style.display = 'block';
+    })
+    .catch(() => {
+      alert("Something went wrong");
+    });
+  });
+</script>
+
+</body>
+</html>
 
