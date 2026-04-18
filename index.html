@@ -184,7 +184,7 @@
 
     const emailInput = form.querySelector('input[name="EMAIL"]');
 
-    fetch(https://aa3c05eb.sibforms.com/serve/XXXX, {
+    fetch("https://aa3c05eb.sibforms.com/serve/XXXX", {
       method: "POST",
       body: new URLSearchParams({
         EMAIL: emailInput.value,
@@ -199,7 +199,7 @@
     })
     .then(() => {
       form.reset();
-      success.style.display = 'block';
+      success.style.display = "block";
     });
   });
 </script>
