@@ -184,27 +184,25 @@
 
     const emailInput = form.querySelector('input[name="EMAIL"]');
 
-    fetch("https://aa3c05eb.sibforms.com/serve/XXXX", {
+    fetch("HER_SÆTTER_DU_DIN_NYE_VOFT_BREVO_URL_IND", {
       method: "POST",
       body: new URLSearchParams({
         EMAIL: emailInput.value,
         locale: "en",
-        html_type: "simple"
+        html_type: "simple",
+        email_address_check: ""
       }),
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
-      }
+      },
+      mode: "no-cors"
     })
     .then(() => {
       form.reset();
       success.style.display = 'block';
-    })
-    .catch(() => {
-      alert("Something went wrong");
     });
   });
 </script>
-
 </body>
 </html>
 
