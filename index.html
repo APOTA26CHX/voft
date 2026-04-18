@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VOFT</title>
   <link rel="icon" type="image/png" href="favicon.png?v=3" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     html, body {
@@ -29,7 +30,7 @@
           rgba(0, 0, 0, 0.08) 35%,
           rgba(0, 0, 0, 0.22) 100%
         ),
-       url('image.jpg') no-repeat center center / cover;
+        url('image.jpg') no-repeat center center / cover;
     }
 
     .overlay {
@@ -59,7 +60,7 @@
       padding: 8px 0;
       font-family: 'Cormorant Garamond', serif;
       font-size: 13px;
-      letter-spacing: 6px;
+      letter-spacing: 2px;
       font-weight: 300;
       outline: none;
       box-shadow: none;
@@ -72,6 +73,7 @@
     .signup-form input[type="email"]::placeholder {
       color: rgba(245, 245, 240, 0.6);
       font-style: italic;
+      letter-spacing: 1px;
     }
 
     .signup-form button {
@@ -106,6 +108,14 @@
       transition: opacity 0.25s ease;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    #success-message {
+      display: none;
+      color: rgba(245, 245, 240, 0.8);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 2px;
     }
 
     .input--hidden {
@@ -144,7 +154,6 @@
 <body>
   <div class="background">
     <div class="overlay">
-
       <form
         id="sib-form"
         class="signup-form"
@@ -156,53 +165,48 @@
           id="EMAIL"
           name="EMAIL"
           autocomplete="off"
-          placeholder="Enter Your E-mail"
+          placeholder="Your email"
           required
         />
-        <button type="submit">Submite</button>
+        <button type="submit">Stay close</button>
 
         <input type="text" name="email_address_check" value="" class="input--hidden" />
         <input type="hidden" name="locale" value="en" />
         <input type="hidden" name="html_type" value="simple" />
-</form>
+      </form>
 
-<div id="success-message" style="display:none; color:rgba(245,245,240,0.8); font-family: 'Hoefler Text', serif; font-size:11px; letter-spacing:3px;">
-  Thank you
-</div>
+      <div id="success-message">Thank you</div>
 
-<a href="mailto:vel.olk@gmail.com" class="contact-link">Contact</a>
-
+      <a href="mailto:vel.olk@gmail.com" class="contact-link">Contact</a>
     </div>
   </div>
 
-<script>
-  const form = document.getElementById('sib-form');
-  const success = document.getElementById('success-message');
+  <script>
+    const form = document.getElementById('sib-form');
+    const success = document.getElementById('success-message');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    const emailInput = form.querySelector('input[name="EMAIL"]');
+      const emailInput = form.querySelector('input[name="EMAIL"]');
 
-    fetch("https://aa3c05eb.sibforms.com/serve/XXXX", {
-      method: "POST",
-      body: new URLSearchParams({
-        EMAIL: emailInput.value,
-        locale: "en",
-        html_type: "simple",
-        email_address_check: ""
-      }),
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      mode: "no-cors"
-    })
-    .then(() => {
-      form.reset();
-      success.style.display = "block";
+      fetch("https://aa3c05eb.sibforms.com/serve/XXXX", {
+        method: "POST",
+        body: new URLSearchParams({
+          EMAIL: emailInput.value,
+          locale: "en",
+          html_type: "simple",
+          email_address_check: ""
+        }),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        mode: "no-cors"
+      }).then(() => {
+        form.reset();
+        success.style.display = "block";
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
-
